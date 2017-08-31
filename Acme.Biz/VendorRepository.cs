@@ -51,6 +51,19 @@ namespace Acme.Biz
             };
               
             Console.WriteLine(vendors);
+
+            //Looks up the vendor twice
+            if (vendors.ContainsKey("XYZ Inc"))
+            { 
+                Console.WriteLine(vendors["XYZ Inc"]);
+            }
+            //Looks up the vendor only once
+            Vendor vendor;
+            if(vendors.TryGetValue("XYZ Inc", out vendor))
+            {
+                Console.WriteLine(vendor);
+            }
+
             return vendors;
         }
 
