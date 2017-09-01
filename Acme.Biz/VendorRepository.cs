@@ -42,6 +42,38 @@ namespace Acme.Biz
         /// Retrieve all the approved vendors.
         /// </summary>
         /// <returns></returns>
+        public Vendor[] RetrieveArray()
+        {
+            var vendors = new Vendor[2]
+            {
+                new Vendor()
+                    { VendorId = 5, CompanyName = "ABC Corp", Email = "abc@abc.com" },
+                new Vendor()
+                    { VendorId = 8, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" }
+            };
+
+            //Console.WriteLine(vendors);
+
+            ////Iteration by Keys
+            //foreach (var companyName in vendors.Keys)
+            //{
+            //    Console.WriteLine(companyName);
+            //    Console.WriteLine(vendors[companyName]);
+            //}
+
+            ////Iteration by Values
+            //foreach (var vendor in vendors.Values)
+            //{
+            //    Console.WriteLine(vendor);
+            //}
+
+            return vendors;
+        }
+
+            /// <summary>
+            /// Retrieve all the approved vendors.
+            /// </summary>
+            /// <returns></returns>
         public Dictionary<string, Vendor> RetrieveWithKeys()
         {
             var vendors = new Dictionary<string, Vendor>()
