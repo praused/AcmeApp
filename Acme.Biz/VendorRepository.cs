@@ -14,7 +14,7 @@ namespace Acme.Biz
         /// Retrieve all the approved vendors.
         /// </summary>
         /// <returns></returns>
-        public List<Vendor> Retrieve()
+        public ICollection<Vendor> Retrieve()
         {
             if (vendors == null)
             {
@@ -34,88 +34,6 @@ namespace Acme.Biz
             {
                 Console.WriteLine(vendor);
             }
-
-            return vendors;
-        }
-
-        /// <summary>
-        /// Retrieve all the approved vendors.
-        /// </summary>
-        /// <returns></returns>
-        public Vendor[] RetrieveArray()
-        {
-            var vendors = new Vendor[2]
-            {
-                new Vendor()
-                    { VendorId = 5, CompanyName = "ABC Corp", Email = "abc@abc.com" },
-                new Vendor()
-                    { VendorId = 8, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" }
-            };
-
-            //Console.WriteLine(vendors);
-
-            ////Iteration by Keys
-            //foreach (var companyName in vendors.Keys)
-            //{
-            //    Console.WriteLine(companyName);
-            //    Console.WriteLine(vendors[companyName]);
-            //}
-
-            ////Iteration by Values
-            //foreach (var vendor in vendors.Values)
-            //{
-            //    Console.WriteLine(vendor);
-            //}
-
-            return vendors;
-        }
-
-            /// <summary>
-            /// Retrieve all the approved vendors.
-            /// </summary>
-            /// <returns></returns>
-        public Dictionary<string, Vendor> RetrieveWithKeys()
-        {
-            var vendors = new Dictionary<string, Vendor>()
-            {
-                { "ABC Corp", new Vendor() { VendorId = 5, CompanyName = "ABC Corp", Email = "abc@abc.com" }},
-                { "XYZ Inc", new Vendor() { VendorId = 8, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" }}
-            };
-
-            //Console.WriteLine(vendors);
-
-            ////Iteration by Keys
-            //foreach (var companyName in vendors.Keys)
-            //{
-            //    Console.WriteLine(companyName);
-            //    Console.WriteLine(vendors[companyName]);
-            //}
-
-            ////Iteration by Values
-            //foreach (var vendor in vendors.Values)
-            //{
-            //    Console.WriteLine(vendor);
-            //}
-
-            //Iteration by Element (key-value pairs) -- avoid because it is slower than iterating by keys or values
-            foreach (var element in vendors)
-            {
-                var vendor = element.Value;
-                var key = element.Key;
-                Console.WriteLine($"Key: {key}, Value: {vendor}");
-            }
-
-            ////Looks up the vendor twice
-            //if (vendors.ContainsKey("XYZ"))
-            //{ 
-            //    Console.WriteLine(vendors["XYZ"]);
-            //}
-            ////Looks up the vendor only once
-            //Vendor vendor;
-            //if(vendors.TryGetValue("XYZ", out vendor))
-            //{
-            //    Console.WriteLine(vendor);
-            //}
 
             return vendors;
         }
