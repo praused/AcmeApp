@@ -14,7 +14,7 @@ namespace Acme.Biz
         /// Retrieve all the approved vendors.
         /// </summary>
         /// <returns></returns>
-        public ICollection<Vendor> Retrieve()
+        public IEnumerable<Vendor> Retrieve()
         {
             if (vendors == null)
             {
@@ -32,7 +32,7 @@ namespace Acme.Biz
 
             foreach (var vendor in vendors)
             {
-                Console.WriteLine(vendor);
+                //Console.WriteLine(vendor);
             }
 
             return vendors;
