@@ -110,13 +110,29 @@ namespace Acme.Biz.Tests
 
             //Act
             var vendors = repository.RetrieveAll();
-            var vendorQuery = from v in vendors
-                              where v.CompanyName.Contains("Toy")
-                              orderby v.CompanyName
-                              select v;
+
+            ////Query Syntax
+            //var vendorQuery = from v in vendors
+            //                  where v.CompanyName.Contains("Toy")
+            //                  orderby v.CompanyName
+            //                  select v;
+
+            //Method Syntax
+            var vendorQuery = vendors.Where(FilterCompanies).OrderBy(OrderCompaniesByName);
 
             //Assert
             CollectionAssert.AreEqual(expected, vendorQuery.ToList());
         }
+
+        //private bool FilterCompanies(Vendor v)
+        //{
+        //    return v.CompanyName.Contains("Toy");
+        //}
+        //Since FilterCompanies is a single-line method, we can simplify using expression body method syntax.
+        //Replace method body and return statement with a lambda operator.
+        private bool FilterCompanies(Vendor v) => v.CompanyName.Contains("Toy");
+
+        private string OrderCompaniesByName(Vendor v) => v.CompanyName;
+
     }
 }
