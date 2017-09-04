@@ -117,22 +117,25 @@ namespace Acme.Biz.Tests
             //                  orderby v.CompanyName
             //                  select v;
 
-            //Method Syntax
-            var vendorQuery = vendors.Where(FilterCompanies).OrderBy(OrderCompaniesByName);
+            ////Method Syntax
+            //var vendorQuery = vendors.Where(FilterCompanies).OrderBy(OrderCompaniesByName);
+
+            //Using Mwthod Syntax with Lambda Expressions directly in-line
+            var vendorQuery = vendors.Where(v => v.CompanyName.Contains("Toy")).OrderBy(v => v.CompanyName);
 
             //Assert
             CollectionAssert.AreEqual(expected, vendorQuery.ToList());
         }
 
-        //private bool FilterCompanies(Vendor v)
-        //{
-        //    return v.CompanyName.Contains("Toy");
-        //}
-        //Since FilterCompanies is a single-line method, we can simplify using expression body method syntax.
-        //Replace method body and return statement with a lambda operator.
-        private bool FilterCompanies(Vendor v) => v.CompanyName.Contains("Toy");
+        ////private bool FilterCompanies(Vendor v)
+        ////{
+        ////    return v.CompanyName.Contains("Toy");
+        ////}
+        ////Since FilterCompanies is a single-line method, we can simplify using expression body method syntax.
+        ////Replace method body and return statement with a lambda operator.
+        //private bool FilterCompanies(Vendor v) => v.CompanyName.Contains("Toy");
 
-        private string OrderCompaniesByName(Vendor v) => v.CompanyName;
+        //private string OrderCompaniesByName(Vendor v) => v.CompanyName;
 
     }
 }
